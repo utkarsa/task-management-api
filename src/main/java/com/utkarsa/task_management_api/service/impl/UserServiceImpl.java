@@ -18,11 +18,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse register(RegisterRequest request) {
 
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
         User user = new User();
 
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword()); // BCrypt later
+        user.setPassword(request.getPassword());
         user.setRole(Role.USER);
 
         User savedUser = userRepository.save(user);
