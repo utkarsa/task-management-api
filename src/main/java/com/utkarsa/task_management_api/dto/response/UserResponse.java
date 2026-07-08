@@ -1,4 +1,4 @@
-package com.utkarsa.task_management_api.dto;
+package com.utkarsa.task_management_api.dto.response;
 
 
 import com.utkarsa.task_management_api.enums.Role;
